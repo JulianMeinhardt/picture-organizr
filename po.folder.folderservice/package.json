@@ -1,6 +1,6 @@
 {
-  "name": "my-first-mern-app",
-  "version": "1.0.0",
+  "name": "po.folder.folderservice",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -8,31 +8,29 @@
   },
   "scripts": {
     "test": "mocha ",
-    "start-debug": "nodemon server.js --exec babel-node",
-    "build": "babel lib -d dist",
-    "serve": "node dist/index.js"
+    "start-debug": "nodemon"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JulianMeinhardt/my-first-mern-app.git"
+    "url": "git+https://github.com/JulianMeinhardt/picture-organizr.git"
   },
   "author": "JMeinhardt",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JulianMeinhardt/my-first-mern-app/issues"
+    "url": "https://github.com/JulianMeinhardt/picture-organizr/issues"
   },
-  "homepage": "https://github.com/JulianMeinhardt/my-first-mern-app#readme",
+  "homepage": "https://github.com/JulianMeinhardt/picture-organizr#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.2",
-    "mongoose": "^4.9.9",
-    "winston": "^2.3.1"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.0",
+    "mongoose": "^4.13.2",
+    "winston": "^2.4.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.3.0",
-    "nodemon": "^1.11.0"
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "nodemon": "^1.12.0"
   }
 }
