@@ -2,6 +2,7 @@
     "parser": "babel-eslint",
     "extends": "airbnb-base",
     "rules": {
-        "consistent-return": 0
+        "consistent-return": 0,
+        "linebreak-style": 0
     }
 }
