@@ -2,12 +2,12 @@ const express = require('express');
 const {
   getFolders,
   getFolderById,
-} = require('../../application/folder/queries');
+} = require('../../../application/folder/queries');
 const {
   createFolder,
   updateFolderById,
   deleteFolderById,
-} = require('../../application/folder/command');
+} = require('../../../application/folder/commands');
 
 const router = express.Router();
 // returns all folders
