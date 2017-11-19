@@ -4,5 +4,4 @@ export const getFolders = () => {
 
 export const getFolderById = (id) => {
   console.log(`this will return a folder with the following id:${id}`);
-}
-;
+};

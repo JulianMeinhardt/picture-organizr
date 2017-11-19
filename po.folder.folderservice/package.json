@@ -7,7 +7,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "test": "mocha ",
+    "lint": "eslint src/** -f table",
+    "test": "mocha ./test/**",
     "start-debug": "nodemon"
   },
   "repository": {

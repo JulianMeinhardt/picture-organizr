@@ -6,7 +6,7 @@ const {
 const {
   createFolder,
   updateFolderById,
-  deleteFolder,
+  deleteFolderById,
 } = require('../../application/folder/command');
 
 const router = express.Router();
@@ -35,8 +35,15 @@ router.put('/:id', (req, res) => {
 router.post('/', (req, res) => {
   const folder = createFolder(req.body);
   res.set('Content-Type', 'applcation/json')
-      .status(201)
-      .send(JSON.stringify(folder));
+    .status(201)
+    .send(JSON.stringify(folder));
+});
+
+router.delete('/:id', (req, res) => {
+  const folder = deleteFolderById(req.params.id);
+  res.setHeader('status', 200); // or should be later status 204 if there was no update
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(folder));
 });
 
 module.exports = router;
