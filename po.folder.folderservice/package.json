@@ -1,0 +1,37 @@
+{
+  "name": "po.folder.folderservice",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "lint": "eslint src/** -f table",
+    "test": "mocha ./test/**",
+    "start-debug": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulianMeinhardt/picture-organizr.git"
+  },
+  "author": "JMeinhardt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JulianMeinhardt/picture-organizr/issues"
+  },
+  "homepage": "https://github.com/JulianMeinhardt/picture-organizr#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.0",
+    "mongoose": "^4.13.2",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "nodemon": "^1.12.0"
+  }
+}

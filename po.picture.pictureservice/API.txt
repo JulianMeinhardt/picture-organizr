@@ -1,0 +1,36 @@
+Bilder
+
+name
+fileSize
+fileType
+created
+lastUpdated
+uploaded
+uploaded_By
+filepath
+tags
+
+Ordner
+
+name
+filepath
+created
+lastUpdated
+
+
+Routen:
+
+GET /folder/:id/pictures
+	list of pictures/subfolders (title, thumbnail?!) of the folder
+
+GET /folder/:id
+	returns metadata of a folder
+POST /folder
+	Creates a folder with metadata
+PUT /folder
+	Updates metadata of a folder
+DELETE /folder
+	Deletes a folder (if there are no pics/subfolders inside)
+
+DELETE /folder?pics=true
+	Deletes a folder with all pics/subfolders in it
