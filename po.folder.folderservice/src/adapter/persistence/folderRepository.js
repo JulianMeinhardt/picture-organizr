@@ -1,4 +1,5 @@
-const persistence = require('../../adapter/persistence/');
+const persistence = require('../../infrastructure/database');
+
 
 const getFolders = () => {
   const allFolders = persistence.getAllFolders();

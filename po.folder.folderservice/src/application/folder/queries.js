@@ -3,7 +3,6 @@ const folderRepository = require('../ports/folderRepository');
 module.exports = {
   getFolders: () => {
     const folders = folderRepository.getFolders();
-    console.log('this will return all folders');
     return folders;
   },
   getFolderById: (id) => {
