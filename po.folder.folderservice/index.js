@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 const api = require('./src/adapter/rest');
 
 const server = express(); // should need api config
-
+server.use(api);
 
 // Start listening to HTTP requests
 server.listen(port, () => {
