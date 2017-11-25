@@ -1,4 +1,4 @@
-const folderRepository = require('../ports/folderRepository');
+const folderRepository = require('../../adapter/persistence/folderRepository');
 
 module.exports = {
   getFolders: () => {
