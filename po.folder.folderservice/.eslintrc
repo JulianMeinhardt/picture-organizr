@@ -3,6 +3,7 @@
     "extends": "airbnb-base",
     "rules": {
         "consistent-return": 0,
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "indent": ["error", 2]
     }
 }
