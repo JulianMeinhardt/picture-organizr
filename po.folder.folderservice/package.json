@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint src/** -f table",
     "test": "mocha ./test/**",
-    "start-debug": "nodemon"
+    "start-debug": "nodemon --inspect"
   },
   "repository": {
     "type": "git",

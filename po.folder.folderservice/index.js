@@ -36,7 +36,6 @@ connectToDatabase().then(() => {
     });
   });
 }).catch((err) => {
-  server.shutdown();
   mongoose.disconnect();
   logger.error('error in app', err);
 });
