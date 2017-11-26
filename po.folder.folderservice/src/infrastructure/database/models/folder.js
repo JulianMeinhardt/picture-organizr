@@ -5,6 +5,6 @@ const folderSchema = new mongoose.Schema({
   filepath: String,
 });
 
-const Folder = mongoose.model('folder', folderSchema);
+const FolderModel = mongoose.model('folder', folderSchema);
 
-module.exports = Folder;
+module.exports = FolderModel;

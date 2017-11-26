@@ -1,16 +1,18 @@
 const logger = require('../../infrastructure/logger');
-const Folder = require('../../infrastructure/database/models/folder');
+const FolderModel = require('../../infrastructure/database/models/folder');
+const Folder = require('../../domain/folder');
 
 
-const getFolders = () => {
-  const allFolders = Folder.find({}, (err, docs) => {
-    if (err) {
-      logger.error('Error while receiving all folders from DB');
-      return null;
-    }
-    return docs;
-  });
-  return allFolders;
+const getFolders = async () => {
+  try {
+    const queryAllFoldersResult = await FolderModel.find({});
+    const allFolders = queryAllFoldersResult.map(
+      folder => new Folder(folder.name, folder.filepath),
+    );
+    return allFolders;
+  } catch (e) {
+    logger.error('error while querying all folders', e);
+  }
 };
 
 module.exports = {

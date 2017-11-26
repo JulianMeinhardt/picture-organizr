@@ -1,8 +1,8 @@
 const folderRepository = require('../../adapter/persistence/folderRepository');
 
 module.exports = {
-  getFolders: () => {
-    const folders = folderRepository.getFolders();
+  getFolders: async () => {
+    const folders = await folderRepository.getFolders();
     return folders;
   },
   getFolderById: (id) => {
