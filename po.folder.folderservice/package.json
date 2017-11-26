@@ -8,8 +8,8 @@
   },
   "scripts": {
     "lint": "eslint src/** -f table",
-    "test": "mocha ./test/**",
-    "start-debug": "nodemon"
+    "test": "mocha test/**/*.js",
+    "start-debug": "nodemon --inspect"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,9 @@
   "homepage": "https://github.com/JulianMeinhardt/picture-organizr#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
     "express": "^4.16.0",
+    "mocha": "^4.0.1",
     "mongoose": "^4.13.2",
     "winston": "^2.4.0"
   },

@@ -11,8 +11,8 @@ const {
 
 const router = express.Router();
 // returns all folders
-router.get('/', (req, res) => {
-  const folders = getFolders();
+router.get('/', async (req, res) => {
+  const folders = await getFolders();
   res.setHeader('status', 200);
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(folders));

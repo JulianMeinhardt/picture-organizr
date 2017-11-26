@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const folderSchema = new mongoose.Schema({
-  name: String,
-  filepath: String,
-  created: { type: Date, default: Date.now },
-  lastUpdated: { type: Date },
+  name: { type: String, required: true },
+  filepath: { type: String, required: true },
 });
 
-module.exports = folderSchema;
+const FolderModel = mongoose.model('folder', folderSchema);
+
+module.exports = FolderModel;
