@@ -5,7 +5,8 @@ module.exports = {
     const folders = await folderRepository.getFolders();
     return folders;
   },
-  getFolderById: (id) => {
-    console.log(`this will return a folder with the following id:${id}`);
+  getFolderById: async (id) => {
+    const folder = await folderRepository.getFolderById(id);
+    return folder;
   },
 };
