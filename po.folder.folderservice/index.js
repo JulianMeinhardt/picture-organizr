@@ -15,8 +15,8 @@ connectToDatabase().then(() => {
   const port = process.env.PORT || 3000;
 
   const server = express(); // should need api config
-  server.use(api);
   server.use(bodyParser.json());
+  server.use(api);
   // Start listening to HTTP requests
   server.listen(port, () => {
     logger.info(`Listening on port ${port}`);
