@@ -18,9 +18,9 @@ router.get('/', async (req, res) => {
   res.send(JSON.stringify(folders));
 });
 
-router.get('/:id', (req, res) => {
-  const folder = getFolderById(req.params.id);
-  res.setHeader('status', 201);
+router.get('/:id', async (req, res) => {
+  const folder = await getFolderById(req.params.id);
+  res.setHeader('status', 200);
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(folder));
 });
@@ -32,8 +32,8 @@ router.put('/:id', (req, res) => {
   res.send(JSON.stringify(folder));
 });
 
-router.post('/', (req, res) => {
-  const folder = createFolder(req.body);
+router.post('/', async (req, res) => {
+  const folder = await createFolder(req.body);
   res.set('Content-Type', 'applcation/json')
     .status(201)
     .send(JSON.stringify(folder));

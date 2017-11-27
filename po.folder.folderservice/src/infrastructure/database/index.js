@@ -8,16 +8,16 @@ const connectToDatabase = () => new Promise((resolve, reject) => {
   }
   mongoose.Promise = global.Promise;
 
-        // database connect needs to be configured in future
-        // mongoose.connect('mongodb://' + config.db_config.host + ":" + config.db_config.port + "/" + config.db_config.name)
+  // database connect needs to be configured in future
+  // mongoose.connect('mongodb://' + config.db_config.host + ":" + config.db_config.port + "/" + config.db_config.name)
   mongoose.connect('mongodb://localhost:27017/picture-organizr')
-            .then(() => {
-              console.log('mongo connection created');
-              resolve(db);
-            })
-            .catch((err) => {
-              console.log(`error creating db connection: ${err}`);
-              reject(db);
-            });
+    .then(() => {
+      console.log('mongo connection created');
+      resolve(db);
+    })
+    .catch((err) => {
+      console.log(`error creating db connection: ${err}`);
+      reject(db);
+    });
 });
 module.exports = connectToDatabase;
