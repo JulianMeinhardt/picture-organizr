@@ -1,13 +1,13 @@
 const Folder = require('../../domain/folder');
+const mongoose = require('mongoose');
 
 module.exports = {
   createFolder: async (body) => {
-    console.log('this will create a folder');
-    console.log('with this body', body);
-    const folder = new Folder(body.name, body.filepath);
-    // TODO: check if folder is valid
-    // TODO: save folder to database
-    return folder;
+    const id = mongoose.Types.ObjectId();
+    const folder = new Folder(id, body.name, body.filepath);
+    if (folder.isValid()) {
+      return folder;
+    }
   },
   deleteFolderById: (id) => {
     console.log(`this will delete a folder with the id: ${id}`);

@@ -29,11 +29,6 @@ connectToDatabase().then(() => {
     logger.info('SIGINT received ...');
     server.shutdown(() => {
       logger.info('Server stopped ...');
-    /* persistence.destroyConnectionPool(() => {
-      logger.info('Database stopped ...');
-      logger.info('Exiting process ...');
-      process.exit();
-    }); */
     });
   });
 }).catch((err) => {
