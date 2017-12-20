@@ -1,8 +1,10 @@
+
 const mongoose = require('mongoose');
 
 const folderSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  filepath: { type: String, required: true },
+  _id: { type: mongoose.Schema.ObjectId, required: true },
+  name: { type: String },
+  filepath: { type: String },
 });
 
 const FolderModel = mongoose.model('folder', folderSchema);

@@ -23,7 +23,32 @@ const getFolderById = async (id) => {
   }
 };
 
+const saveNewFolder = async (folder) => {
+  try {
+    const folderDB = new FolderModel({
+      _id: folder.id,
+      name: folder.name,
+      filepath: folder.filepath,
+    });
+    return await folderDB.save((err, data) => {
+      if (err) {
+        return {
+          saveSuccessfull: false,
+          data: null,
+        };
+      }
+      return {
+        saveSuccessfull: true,
+        data,
+      };
+    });
+  } catch (e) {
+    logger.error('error while saving new folder with following date', folder, e);
+  }
+};
+
 module.exports = {
   getFolders,
   getFolderById,
+  saveNewFolder,
 };

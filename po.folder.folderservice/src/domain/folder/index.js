@@ -6,7 +6,7 @@ class Folder {
     this.filepath = filepath;
   }
 
-  isValid = () => (this.id != null && this.name !== '' && this.filepath !== '');
+  isValid() { return (this.id != null && this.name !== '' && this.filepath !== ''); }
 }
 
 module.exports = Folder;

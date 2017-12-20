@@ -1,4 +1,5 @@
 const Folder = require('../../domain/folder');
+const folderRepository = require('../../adapter/persistence/folderRepository');
 const mongoose = require('mongoose');
 
 module.exports = {
@@ -6,7 +7,8 @@ module.exports = {
     const id = mongoose.Types.ObjectId();
     const folder = new Folder(id, body.name, body.filepath);
     if (folder.isValid()) {
-      return folder;
+      const result = folderRepository.saveNewFolder(folder);
+      return { ...result };
     }
   },
   deleteFolderById: (id) => {

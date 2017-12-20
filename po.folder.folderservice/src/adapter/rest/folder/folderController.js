@@ -34,9 +34,15 @@ router.put('/:id', (req, res) => {
 
 router.post('/', async (req, res) => {
   const folder = await createFolder(req.body);
+  if (folder.saveSuccessfull) {
+    res.set('Content-Type', 'applcation/json')
+      .status(201)
+      .send(JSON.stringify(folder));
+  }
+
   res.set('Content-Type', 'applcation/json')
-    .status(201)
-    .send(JSON.stringify(folder));
+    .status(500)
+    .send(JSON.stringify('internal server error'));
 });
 
 router.delete('/:id', (req, res) => {
