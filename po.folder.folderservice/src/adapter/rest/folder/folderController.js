@@ -9,6 +9,8 @@ const {
   deleteFolderById,
 } = require('../../../application/folder/commands');
 
+const logger = require('../../../infrastructure/logger');
+
 const router = express.Router();
 // returns all folders
 router.get('/', async (req, res) => {
@@ -34,15 +36,16 @@ router.put('/:id', (req, res) => {
 
 router.post('/', async (req, res) => {
   const folder = await createFolder(req.body);
-  if (folder.saveSuccessfull) {
+  try {
     res.set('Content-Type', 'applcation/json')
       .status(201)
       .send(JSON.stringify(folder));
+  } catch (e) {
+    logger.error('error while creating folder');
+    res.set('Content-Type', 'application/json')
+      .status(500)
+      .send();
   }
-
-  res.set('Content-Type', 'applcation/json')
-    .status(500)
-    .send(JSON.stringify('internal server error'));
 });
 
 router.delete('/:id', (req, res) => {
