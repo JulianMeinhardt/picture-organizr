@@ -1,12 +1,13 @@
+const uuidv1 = require('uuid/v1');
 
 class Folder {
-  constructor(_id, name, filepath) {
-    this._id = _id;
+  constructor(name, filepath, id = uuidv1()) {
+    this.id = id;
     this.name = name;
     this.filepath = filepath;
   }
 
-  isValid() { return (this._id != null && this.name !== '' && this.filepath !== ''); }
+  isValid() { return (this.id != null && this.name !== '' && this.filepath !== ''); }
 }
 
 module.exports = Folder;

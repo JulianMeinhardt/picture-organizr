@@ -15,8 +15,8 @@ const getFolders = async () => {
 
 const getFolderById = async (id) => {
   try {
-    const queryFolderByIDResult = await Folder.findOne({ _id: ObjectId(id) });
-    const folder = new Folder(queryFolderByIDResult.name, queryFolderByIDResult.filepath);
+    const queryFolderByIDResult = await FolderModel.findOne({ id });
+    const folder = new Folder(queryFolderByIDResult.id, queryFolderByIDResult.name, queryFolderByIDResult.filepath);
     return folder;
   } catch (e) {
     logger.error(`error while quering folder by id: ${id}`, e);

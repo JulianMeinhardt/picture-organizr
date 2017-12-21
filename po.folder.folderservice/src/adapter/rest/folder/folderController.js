@@ -27,13 +27,6 @@ router.get('/:id', async (req, res) => {
   res.send(JSON.stringify(folder));
 });
 
-router.put('/:id', (req, res) => {
-  const folder = updateFolderById(req.params.id, req.body);
-  res.setHeader('status', 200); // or should be later status 204 if there was no update
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify(folder));
-});
-
 router.post('/', async (req, res) => {
   const folder = await createFolder(req.body);
   try {
@@ -47,6 +40,14 @@ router.post('/', async (req, res) => {
       .send();
   }
 });
+
+router.put('/:id', (req, res) => {
+  const folder = updateFolderById(req.params.id, req.body);
+  res.setHeader('status', 200); // or should be later status 204 if there was no update
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(folder));
+});
+
 
 router.delete('/:id', (req, res) => {
   const folder = deleteFolderById(req.params.id);
