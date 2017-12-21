@@ -9,6 +9,8 @@ const {
   deleteFolderById,
 } = require('../../../application/folder/commands');
 
+const logger = require('../../../infrastructure/logger');
+
 const router = express.Router();
 // returns all folders
 router.get('/', async (req, res) => {
@@ -18,9 +20,9 @@ router.get('/', async (req, res) => {
   res.send(JSON.stringify(folders));
 });
 
-router.get('/:id', (req, res) => {
-  const folder = getFolderById(req.params.id);
-  res.setHeader('status', 201);
+router.get('/:id', async (req, res) => {
+  const folder = await getFolderById(req.params.id);
+  res.setHeader('status', 200);
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(folder));
 });
@@ -32,11 +34,18 @@ router.put('/:id', (req, res) => {
   res.send(JSON.stringify(folder));
 });
 
-router.post('/', (req, res) => {
-  const folder = createFolder(req.body);
-  res.set('Content-Type', 'applcation/json')
-    .status(201)
-    .send(JSON.stringify(folder));
+router.post('/', async (req, res) => {
+  const folder = await createFolder(req.body);
+  try {
+    res.set('Content-Type', 'applcation/json')
+      .status(201)
+      .send(JSON.stringify(folder));
+  } catch (e) {
+    logger.error('error while creating folder');
+    res.set('Content-Type', 'application/json')
+      .status(500)
+      .send();
+  }
 });
 
 router.delete('/:id', (req, res) => {

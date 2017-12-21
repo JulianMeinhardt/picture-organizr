@@ -1,2 +1,4 @@
 /node_modules/*
 logs/error\.log
+
+po\.folder\.folderservice/package-lock\.json
