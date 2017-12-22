@@ -9,8 +9,8 @@ module.exports = {
       result: null,
     };
 
-    const folders = folderRepository.getFoldersByFilepath(body.filepath);
-    const alreadyExistsFolderWithNameInFilepath = folders.include(item => item.name === body.name);
+    const folders = await folderRepository.getFoldersByFilepath(body.filepath);
+    const alreadyExistsFolderWithNameInFilepath = folders.some(item => item.name === body.name);
     if (alreadyExistsFolderWithNameInFilepath) {
       validationResult = {
         ...validationResult,
@@ -22,19 +22,21 @@ module.exports = {
     }
 
     const folder = new Folder(body.name, body.filepath);
-    const folderValidationResult = folder.validate();
-    if (folderValidationResult.result) {
-      const createFolder = await folderRepository.saveNewFolder(folder);
-
+    validationResult = {
+      ...validationResult,
+      errors: [
+        ...validationResult.errors,
+        ...folder.validate().errors,
+      ],
+    };
+    if (validationResult.errors.length === 0) {
+      await folderRepository.saveNewFolder(folder);
       return {
-        result: new Folder(createFolder.name, createFolder.filepath, createFolder.id),
+        result: folder,
       };
     }
 
-    return {
-      result: null,
-      errors: validationResult,
-    };
+    return validationResult;
   },
   deleteFolderById: (id) => {
     console.log(`this will delete a folder with the id: ${id}`);
