@@ -28,8 +28,18 @@ const saveNewFolder = async (folder) => {
     const result = await folderDB.save();
     return result;
   } catch (e) {
-    logger.error('error while saving new folder with following date', folder, e);
+    logger.error(`error while saving new folder with following data ${folder}`, e);
     return null;
+  }
+};
+
+const getFoldersByFilepath = async (filepath) => {
+  try {
+    const queryFolderByFilePath = await FolderModel.find({ filepath });
+    const allFoldersByFilepath = queryFolderByFilePath.map(folder => new Folder(folder.name, folder.filepath, folder.id));
+    return allFoldersByFilepath;
+  } catch (e) {
+    logger.error(`error while saving getting folders by following filepath: ${filepath}`, e);
   }
 };
 
@@ -37,4 +47,5 @@ module.exports = {
   getFolders,
   getFolderById,
   saveNewFolder,
+  getFoldersByFilepath,
 };

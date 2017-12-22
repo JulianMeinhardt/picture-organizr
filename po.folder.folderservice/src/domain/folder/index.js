@@ -7,18 +7,46 @@ class Folder {
     this.filepath = filepath;
   }
 
-  create = (id, name, filepath) => {
-    const folder = new Folder(filepath, name, id);
-    return {
-      ...folder,
-    };
-  }
-
-  isValid() { return (this.id != null && this.name !== '' && this.filepath !== ''); }
-
   validate() {
-    this.id;
-    return true;
+    let validationResult = {
+      errors: [],
+      result: true,
+    };
+
+    if (this.id == null || this.id === '') {
+      validationResult = {
+        ...validationResult,
+        errors: [
+          ...validationResult.errors,
+          'id is invalid',
+        ],
+        result: false,
+      };
+    }
+
+    if (this.filepath == null || this.filepath === '') {
+      validationResult = {
+        ...validationResult,
+        errors: [
+          ...validationResult.errors,
+          'filepath is invalid',
+        ],
+        result: false,
+      };
+    }
+
+    if (this.name == null || this.name === '') {
+      validationResult = {
+        ...validationResult,
+        errors: [
+          ...validationResult.errors,
+          'name is invalid',
+        ],
+        result: false,
+      };
+    }
+
+    return validationResult;
   }
 }
 

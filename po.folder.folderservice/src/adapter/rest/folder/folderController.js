@@ -28,13 +28,19 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const folder = await createFolder(req.body);
   try {
-    res.set('Content-Type', 'applcation/json')
-      .status(201)
-      .send(JSON.stringify(folder));
+    const folderCommand = await createFolder(req.body);
+    if (folderCommand.result !== null) {
+      res.set('Content-Type', 'applcation/json')
+        .status(201)
+        .send(JSON.stringify(folderCommand.result));
+    } else {
+      res.set('Content-Type', 'application/json')
+        .status(400)
+        .send(JSON.stringify(folderCommand.errors));
+    }
   } catch (e) {
-    logger.error('error while creating folder');
+    logger.error('error while creating folder', e);
     res.set('Content-Type', 'application/json')
       .status(500)
       .send();
