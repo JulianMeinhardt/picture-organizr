@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const folderSchema = new mongoose.Schema({
-  _id: { type: mongoose.Schema.ObjectId, required: true },
+  id: { type: String, required: true },
   name: { type: String },
   filepath: { type: String },
 });

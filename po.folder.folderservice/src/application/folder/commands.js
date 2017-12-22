@@ -7,7 +7,7 @@ module.exports = {
     if (folder.isValid()) {
       const result = await folderRepository.saveNewFolder(folder);
 
-      return new Folder(result.id, result.name, result.filepath);
+      return new Folder(result.name, result.filepath, result.id);
     }
 
     return null;

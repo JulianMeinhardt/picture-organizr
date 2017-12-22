@@ -1,12 +1,11 @@
 const logger = require('../../infrastructure/logger');
 const FolderModel = require('../../infrastructure/database/models/folder');
 const Folder = require('../../domain/folder');
-const { ObjectId } = require('mongoose').Types;
 
 const getFolders = async () => {
   try {
     const queryAllFoldersResult = await FolderModel.find({});
-    const allFolders = queryAllFoldersResult.map(folder => new Folder(folder.name, folder.filepath));
+    const allFolders = queryAllFoldersResult.map(folder => new Folder(folder.name, folder.filepath, folder.id));
     return allFolders;
   } catch (e) {
     logger.error('error while querying all folders', e);
@@ -16,7 +15,7 @@ const getFolders = async () => {
 const getFolderById = async (id) => {
   try {
     const queryFolderByIDResult = await FolderModel.findOne({ id });
-    const folder = new Folder(queryFolderByIDResult.id, queryFolderByIDResult.name, queryFolderByIDResult.filepath);
+    const folder = new Folder(queryFolderByIDResult.name, queryFolderByIDResult.filepath, queryFolderByIDResult.id);
     return folder;
   } catch (e) {
     logger.error(`error while quering folder by id: ${id}`, e);
