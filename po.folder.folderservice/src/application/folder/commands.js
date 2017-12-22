@@ -3,9 +3,10 @@ const folderRepository = require('../../adapter/persistence/folderRepository');
 
 module.exports = {
   createFolder: async (body) => {
-    const folder = new Folder(body.name, body.filepath);
-    if (folder.isValid()) {
-      const result = await folderRepository.saveNewFolder(folder);
+
+    const result = Folder.create(body.name, body.filepath);
+    if (result.isValid) {
+      const result = await folderRepository.saveNewFolder(result.folder);
 
       return new Folder(result.name, result.filepath, result.id);
     }

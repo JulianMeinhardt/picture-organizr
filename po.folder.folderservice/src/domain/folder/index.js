@@ -7,7 +7,19 @@ class Folder {
     this.filepath = filepath;
   }
 
+  create = (id, name, filepath) => {
+    const folder = new Folder(filepath, name, id);
+    return {
+      ...folder,
+    };
+  }
+
   isValid() { return (this.id != null && this.name !== '' && this.filepath !== ''); }
+
+  validate() {
+    this.id;
+    return true;
+  }
 }
 
 module.exports = Folder;
