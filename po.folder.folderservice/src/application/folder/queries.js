@@ -9,4 +9,8 @@ module.exports = {
     const folder = await folderRepository.getFolderById(id);
     return folder;
   },
+  getSubfoldersByParentId: async (id) => {
+    const subfolders = await folderRepository.getSubfoldersByParentId(id);
+    return subfolders;
+  },
 };

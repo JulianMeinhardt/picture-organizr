@@ -22,6 +22,16 @@ const getFolderById = async (id) => {
   }
 };
 
+const getSubfoldersByParentId = async (id) => {
+  try {
+    const querySubfoldersResult = await FolderModel.finAll({ parentID: id });
+    const allSubfolders = querySubfoldersResult.map(folder => new Folder(folder.name, folder.filepath, folder.id));
+    return allSubfolders;
+  } catch (e) {
+    logger.error(`error while quering subfolders by id: ${id}`, e);
+  }
+}
+
 const saveNewFolder = async (folder) => {
   try {
     const folderDB = new FolderModel({ ...folder });
@@ -46,6 +56,7 @@ const getFoldersByFilepath = async (filepath) => {
 module.exports = {
   getFolders,
   getFolderById,
+  getSubfoldersByParentId,
   saveNewFolder,
   getFoldersByFilepath,
 };

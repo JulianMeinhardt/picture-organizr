@@ -2,6 +2,7 @@ const express = require('express');
 const {
   getFolders,
   getFolderById,
+  getSubfoldersByParentId
 } = require('../../../application/folder/queries');
 const {
   createFolder,
@@ -25,6 +26,13 @@ router.get('/:id', async (req, res) => {
   res.setHeader('status', 200);
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(folder));
+});
+
+router.get('/:id/subfolders', async (req, res) => {
+  const subfolders = await getSubfoldersByParentId(req.params.id);
+  res.setHeader('status', 200);
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(subfolders));
 });
 
 router.post('/', async (req, res) => {
