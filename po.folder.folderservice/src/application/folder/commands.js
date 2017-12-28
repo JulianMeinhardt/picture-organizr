@@ -9,7 +9,7 @@ module.exports = {
       result: null,
     };
 
-    const folders = await folderRepository.getFoldersByFilepath(body.filepath);
+    const folders = await folderRepository.getSubfoldersByParentId(body.parentId);
     const alreadyExistsFolderWithNameInFilepath = folders.some(item => item.name === body.name);
     if (alreadyExistsFolderWithNameInFilepath) {
       validationResult = {

@@ -24,7 +24,7 @@ const getFolderById = async (id) => {
 
 const getSubfoldersByParentId = async (id) => {
   try {
-    const querySubfoldersResult = await FolderModel.finAll({ parentID: id });
+    const querySubfoldersResult = await FolderModel.find({ parentID: id });
     const allSubfolders = querySubfoldersResult.map(folder => new Folder(folder.name, folder.filepath, folder.id));
     return allSubfolders;
   } catch (e) {
