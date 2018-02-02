@@ -2,7 +2,7 @@ const express = require('express');
 const {
   getFolders,
   getFolderById,
-  getSubfoldersByParentId
+  getSubfoldersByParentId,
 } = require('../../../application/folder/queries');
 const {
   createFolder,
@@ -13,6 +13,8 @@ const {
 const logger = require('../../../infrastructure/logger');
 
 const router = express.Router();
+
+// TODO: Remove all GETs and move them to new Query-Service
 // returns all folders
 router.get('/', async (req, res) => {
   const folders = await getFolders();
@@ -37,15 +39,15 @@ router.get('/:id/subfolders', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const folderCommand = await createFolder(req.body);
-    if (folderCommand.result !== null) {
+    const createFolderCommand = await createFolder(req.body);
+    if (createFolderCommand.result !== null) {
       res.set('Content-Type', 'applcation/json')
         .status(201)
-        .send(JSON.stringify(folderCommand.result));
+        .send(JSON.stringify(createFolderCommand.result));
     } else {
       res.set('Content-Type', 'application/json')
         .status(400)
-        .send(JSON.stringify(folderCommand.errors));
+        .send(JSON.stringify(createFolderCommand.errors));
     }
   } catch (e) {
     logger.error('error while creating folder', e);

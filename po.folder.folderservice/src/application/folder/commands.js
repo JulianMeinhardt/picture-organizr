@@ -21,7 +21,7 @@ module.exports = {
       };
     }
 
-    const folder = new Folder(body.name, body.filepath);
+    const folder = new Folder(body.name, body.parentId);
     validationResult = {
       ...validationResult,
       errors: [

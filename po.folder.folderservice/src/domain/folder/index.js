@@ -1,10 +1,14 @@
 const uuidv1 = require('uuid/v1');
 
 class Folder {
-  constructor(name, filepath, id = uuidv1()) {
+  constructor(name, parentId, id = uuidv1()) {
     this.id = id;
     this.name = name;
-    this.filepath = filepath;
+    this.parentId = parentId;
+    // maybe in future
+    // this.folderIcon
+    // userIdsWithReadingRights
+    // userIdsWithWritingRights
   }
 
   validate() {
@@ -24,23 +28,23 @@ class Folder {
       };
     }
 
-    if (this.filepath == null || this.filepath === '') {
-      validationResult = {
-        ...validationResult,
-        errors: [
-          ...validationResult.errors,
-          'filepath is invalid',
-        ],
-        result: false,
-      };
-    }
-
     if (this.name == null || this.name === '') {
       validationResult = {
         ...validationResult,
         errors: [
           ...validationResult.errors,
           'name is invalid',
+        ],
+        result: false,
+      };
+    }
+
+    if (this.parentId == null || this.parentId === '') {
+      validationResult = {
+        ...validationResult,
+        errors: [
+          ...validationResult.errors,
+          'parentId is invalid',
         ],
         result: false,
       };
